@@ -5,8 +5,7 @@ async function getUsers(): Promise<User[]> {
     try {
       const res = await axios.get<User[]>(`http://localhost:5138/api/User`, {
         headers: {
-          Authorization:  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyIiwibmFtZSI6IlRoYXJhIiwidXNlcm5hbWUiOiJUaGFyYSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwicGVybWlzc2lvbiI6WyJQb2xpY3kuQWRkIiwiUG9saWN5LkVkaXQiLCJQb2xpY3kuRGVsZXRlIiwiUG9saWN5Lkxpc3QiLCJEb2N1bWVudC5BZGQiLCJEb2N1bWVudC5MaXN0Il0sImV4cCI6MTc1NTMyNDQ1NiwiaXNzIjoibXktYXBpIiwiYXVkIjoibXktY2xpZW50In0.XHVraz8csQgfyMXNoL-6SDjmwj4gCEgjasKQk7PDWu0`
-        }
+          Authorization:  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4IiwibmFtZSI6IkRvcmEiLCJ1c2VybmFtZSI6IkRvcmEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsInBlcm1pc3Npb24iOlsiUG9saWN5LkFkZCIsIlBvbGljeS5FZGl0IiwiUG9saWN5LkRlbGV0ZSIsIlBvbGljeS5MaXN0IiwiRG9jdW1lbnQuQWRkIiwiRG9jdW1lbnQuTGlzdCJdLCJleHAiOjE3NTU0NTYxMjAsImlzcyI6Im15LWFwaSIsImF1ZCI6Im15LWNsaWVudCJ9.OEIzGWlTvu7gBP0Ul2XLYVXPgA8zUhr5DYVsTKhzx08`}
       });
       return res.data;
     } catch (error) {
@@ -23,7 +22,7 @@ export default async function UsersPage()
       <h1 className="text-2xl font-semibold mb-4">Users</h1>
 
       <table className="min-w-full border border-gray-300">
-        <thead className="bg-gray-100">
+        <thead className="bg-green-900">
           <tr>
             <th className="border px-4 py-2 text-left">ID</th>
             <th className="border px-4 py-2 text-left">Name</th>
