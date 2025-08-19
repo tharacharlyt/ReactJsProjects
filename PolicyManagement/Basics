@@ -1,0 +1,176 @@
+int age = 25;              // Integer
+double price = 99.99;      // Decimal number
+string name = "Alice";     // Text
+bool isActive = true;      // True/False
+char grade = 'A';          // Single character
+
+//  Loops in C#
+
+int number = 10;
+
+if (number > 0)
+{
+    Console.WriteLine("Positive number");
+}
+else if (number < 0)
+{
+    Console.WriteLine("Negative number");
+}
+else
+{
+    Console.WriteLine("Zero");
+}
+
+
+// While Loop
+
+int i = 1;
+while (i <= 0)
+{
+    Console.WriteLine("While: " + i);
+    i++;
+}
+
+
+// Do..While Loop
+
+int j = 1;
+do
+{
+    Console.WriteLine("DoWhile: " + j);
+    j++;
+} while (j <= 0);
+
+// Foreach Loop (for collections/arrays)
+
+string[] fruits = { "Apple", "Banana", "Mango" };
+
+foreach (string fruit in fruits)
+{
+    Console.WriteLine(fruit);
+}
+
+// Output: Apple Banana Mango
+
+
+// Basic Data Structures 
+
+// Array
+
+// Fixed size, same type.
+
+int[] numbers = { 10, 20, 30, 40 };
+Console.WriteLine(numbers[2]); // 30
+
+// List (Dynamic Array)
+
+// using System.Collections.Generic;
+
+List<string> names = new List<string>();
+names.Add("Alice");
+names.Add("Bob");
+names.Add("Charlie");
+
+foreach (string n in names)
+{
+    Console.WriteLine(n);
+}
+
+// Dictionary (Key-Value Pairs)
+
+// using System.Collections.Generic;
+
+Dictionary<int, string> students = new Dictionary<int, string>();
+students.Add(1, "Alice");
+students.Add(2, "Bob");
+
+Console.WriteLine(students[1]); // Alice
+
+// Switch Statement (alternative to many if-else)
+
+int day = 3;
+
+switch (day)
+{
+    case 1:
+        Console.WriteLine("Monday");
+        break;
+    case 2:
+        Console.WriteLine("Tuesday");
+        break;
+    case 3:
+        Console.WriteLine("Wednesday");
+        break;
+    default:
+        Console.WriteLine("Other Day");
+        break;
+}
+
+// Output: Wednesday
+
+// Creating a Class
+
+public class Car
+{
+    public string Brand;
+    public string Model;
+    public int Year;
+
+    public void DisplayInfo()
+    {
+        Console.WriteLine($"{Year} {Brand} {Model}");
+    }
+}
+
+// Creating an Object (Using new)
+
+class Program
+{
+    static void Main()
+    {
+        // Object creation
+        Car car1 = new Car();
+
+        // Assign values
+        car1.Brand = "Toyota";
+        car1.Model = "Corolla";
+        car1.Year = 2020;
+
+        // Call method
+        car1.DisplayInfo();
+        // Output: 2020 Toyota Corolla
+    }
+}
+
+// new Car() → creates a new object in memory.
+// car1 → reference variable pointing to that object.
+
+
+
+
+// Object Creation with Constructor
+
+
+// Instead of setting fields one by one, we can use a constructor:
+
+public class Car
+{
+    public string Brand;
+    public string Model;
+    public int Year;
+
+    // Constructor
+    public Car(string brand, string model, int year)
+    {
+        Brand = brand;
+        Model = model;
+        Year = year;
+    }
+
+    public void DisplayInfo()
+    {
+        Console.WriteLine($"{Year} {Brand} {Model}");
+    }
+}
+
+

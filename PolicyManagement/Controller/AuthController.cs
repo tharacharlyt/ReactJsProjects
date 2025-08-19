@@ -62,7 +62,7 @@ public class AuthController : ControllerBase
 
         user.RefreshToken = refreshToken;
         user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
-        await _userService.UpdateUser(user); // Add this method to your IUserService/PostgresUserService
+        // await _userService.UpdateUser(user); // Add this method to your IUserService/PostgresUserService
 
         return Ok(new
         {
@@ -86,7 +86,7 @@ public class AuthController : ControllerBase
 
         user.RefreshToken = newRefresh;
         user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
-        await _userService.UpdateUser(user); // Update the user's refresh token in the database
+        // await _userService.UpdateUser(user); // Update the user's refresh token in the database
 
         return Ok(new
         {
