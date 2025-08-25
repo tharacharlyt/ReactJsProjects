@@ -5,11 +5,17 @@ async function getUsers(): Promise<User[]> {
     try {
       const res = await axios.get<User[]>(`http://localhost:5138/api/User`, {
         headers: {
-          Authorization:  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMiIsIm5hbWUiOiJBbGxlbjExIiwidXNlcm5hbWUiOiJBbGxlbjExIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJwZXJtaXNzaW9uIjpbIlBvbGljeS5BZGQiLCJQb2xpY3kuRWRpdCIsIlBvbGljeS5EZWxldGUiLCJQb2xpY3kuTGlzdCIsIkRvY3VtZW50LkFkZCIsIkRvY3VtZW50Lkxpc3QiXSwiZXhwIjoxNzU1NjM1MDcwLCJpc3MiOiJteS1hcGkiLCJhdWQiOiJteS1jbGllbnQifQ.YdvwKhTiN5GMQ49s1B3Aa2bERsac-ZK_P628LO1OR7o`}
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMyIsIm5hbWUiOiJzbWl0aDExIiwidXNlcm5hbWUiOiJzbWl0aDExIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJwZXJtaXNzaW9uIjpbIlBvbGljeS5BZGQiLCJQb2xpY3kuRWRpdCIsIlBvbGljeS5EZWxldGUiLCJQb2xpY3kuTGlzdCIsIkRvY3VtZW50LkFkZCIsIkRvY3VtZW50Lkxpc3QiXSwiZXhwIjoxNzU2MTM2MzMwLCJpc3MiOiJteS1hcGkiLCJhdWQiOiJteS1jbGllbnQifQ.RxkdCuJWiDORzlhA2RqXpfMlr5pRIYuyHcQUiC5YxRY` // optional
+        },
       });
+      console.log('API response:', res.data);
       return res.data;
-    } catch (error) {
-      console.error('Error fetching users:', error);
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        console.error('Axios error response:', error.response?.data);
+      } else {
+        console.error('Unexpected error:', error);
+      }
       return [];
     }
   }
@@ -33,7 +39,7 @@ export default async function UsersPage()
         </thead>
         <tbody>
         {users.map(u => (
-            <tr>
+            <tr key={u.userId}>
               <td className="border px-4 py-2">{u.userId.toString()}</td>
               <td className="border px-4 py-2">{u.name}</td>
               <td className="border px-4 py-2">{u.username}</td>

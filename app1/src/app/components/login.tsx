@@ -2,6 +2,9 @@
 import { useState } from "react";
 import axios from "axios";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "@/store/slices/authSlice";
+import { AppDispatch } from "@/store";
 
 
 export default function Login() {
@@ -16,14 +19,18 @@ export default function Login() {
     console.log(formData);
     try {
       const response = await axios.post("http://localhost:5138/api/auth/login", {
-        // "username":"Athira1",
-        // "password":"Athira23"
+       
         "username": formData.username,
         "password": formData.password
       });
 
+      const dispatch = useDispatch<AppDispatch>();
+      dispatch(setCredentials({ token: response.data.token, user: {name: "", email: "", role: "", status: ""} }));
+
       setMessage("Login successful!");
       console.log("Login response:", response.data.token);
+      
+      // dispatch(setCredentials({ token, null }));
 
       // Example: save token
       // localStorage.setItem("token", response.data.token);
