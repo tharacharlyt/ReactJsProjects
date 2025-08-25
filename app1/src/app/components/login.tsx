@@ -1,49 +1,44 @@
 "use client";
+
 import { useState } from "react";
 import axios from "axios";
-import React from "react";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "@/store/slices/authSlice";
-import { AppDispatch } from "@/store";
-
+import { AppDispatch } from "@/store";
 
 export default function Login() {
+  const dispatch = useDispatch<AppDispatch>();
   const [formData, setFormData] = useState({ username: "", password: "" });
-  const [message, setMessage] = useState("default message");
+  const [message, setMessage] = useState("");
+
+  // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async(e: React.FormEvent) => {
+  // Handle form submit
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
+
     try {
       const response = await axios.post("http://localhost:5138/api/auth/login", {
-       
-        "username": formData.username,
-        "password": formData.password
+        username: formData.username,
+        password: formData.password,
       });
 
-      const dispatch = useDispatch<AppDispatch>();
-      dispatch(setCredentials({ token: response.data.token, user: {name: "", email: "", role: "", status: ""} }));
+      // Save only the token in Redux
+      const token = response.data.token;
+      dispatch(setCredentials({ token, user: {name: "", email: "", role: "", status: ""} }));
 
       setMessage("Login successful!");
-      console.log("Login response:", response.data.token);
-      
-      // dispatch(setCredentials({ token, null }));
-
-      // Example: save token
-      // localStorage.setItem("token", response.data.token);
+      console.log("Token:", token);
 
     } catch (error: any) {
       if (error.response) {
-        // Server responded with a status other than 2xx
         setMessage(`Login failed: ${error.response.data.message || error.response.statusText}`);
       } else if (error.request) {
-        // Request was made but no response received
         setMessage("No response from server. Please try again later.");
       } else {
-        // Something else happened
         setMessage("An error occurred. Please try again.");
       }
       console.error("Login error:", error);

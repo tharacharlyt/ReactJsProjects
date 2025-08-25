@@ -5,7 +5,7 @@ async function getUsers(): Promise<User[]> {
     try {
       const res = await axios.get<User[]>(`http://localhost:5138/api/User`, {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMyIsIm5hbWUiOiJzbWl0aDExIiwidXNlcm5hbWUiOiJzbWl0aDExIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJwZXJtaXNzaW9uIjpbIlBvbGljeS5BZGQiLCJQb2xpY3kuRWRpdCIsIlBvbGljeS5EZWxldGUiLCJQb2xpY3kuTGlzdCIsIkRvY3VtZW50LkFkZCIsIkRvY3VtZW50Lkxpc3QiXSwiZXhwIjoxNzU2MTM2MzMwLCJpc3MiOiJteS1hcGkiLCJhdWQiOiJteS1jbGllbnQifQ.RxkdCuJWiDORzlhA2RqXpfMlr5pRIYuyHcQUiC5YxRY` // optional
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMyIsIm5hbWUiOiJzbWl0aDExIiwidXNlcm5hbWUiOiJzbWl0aDExIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJwZXJtaXNzaW9uIjpbIlBvbGljeS5BZGQiLCJQb2xpY3kuRWRpdCIsIlBvbGljeS5EZWxldGUiLCJQb2xpY3kuTGlzdCIsIkRvY3VtZW50LkFkZCIsIkRvY3VtZW50Lkxpc3QiXSwiZXhwIjoxNzU2MTM4MTAzLCJpc3MiOiJteS1hcGkiLCJhdWQiOiJteS1jbGllbnQifQ.4oYJ8MwEcP3_BMwR6fojX_yx_u7TxLChtYWgLs5WBvE` // optional
         },
       });
       console.log('API response:', res.data);
